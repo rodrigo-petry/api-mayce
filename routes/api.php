@@ -23,5 +23,8 @@ Route::namespace('Api')->name('api.')->group(function () {
         Route::get('/{id}', 'PartnerRequestController@show')->name('partner_profile');
 
         Route::post('/', 'PartnerRequestController@store')->name('store_partner');
+        Route::put('/{id}', 'PartnerRequestController@update')->name('update-partner');
+
+        Route::delete('/{id}', 'PartnerRequestController@delete')->name('delete-partner');
     });
 });
