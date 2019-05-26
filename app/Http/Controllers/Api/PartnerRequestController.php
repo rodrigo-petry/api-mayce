@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\PartnerRequest;
 use App\Http\Controllers\Controller;
+use App\PartnerRequest;
 
 class PartnerRequestController extends Controller
 {
@@ -39,6 +39,7 @@ class PartnerRequestController extends Controller
             if (config('app.debug')) {
                 return response()->json(ApiError::errorMessage($e->getMessage(), 1010));
             }
+
             return reponse()->json(ApiError::errorMessage('Ops, o cadastro do parceiro não foi realizado!', 1010));
         }
     }
