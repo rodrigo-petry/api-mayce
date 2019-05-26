@@ -21,5 +21,7 @@ Route::namespace('Api')->name('api.')->group(function () {
     Route::prefix('/partner-requests')->group(function () {
         Route::get('/', 'PartnerRequestController@index')->name('partner_requests');
         Route::get('/{id}', 'PartnerRequestController@show')->name('partner_profile');
+
+        Route::post('/', 'PartnerRequestController@store')->name('store_partner');
     });
 });

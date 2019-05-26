@@ -12,7 +12,7 @@ class PartnerRequestController extends Controller
 
     public function __construct(PartnerRequest $partnerRequest)
     {
-        $this->$partnerRequest = $partnerRequest;
+        $this->partnerRequest = $partnerRequest;
     }
 
     public function index ()
@@ -23,5 +23,21 @@ class PartnerRequestController extends Controller
     public function show (PartnerRequest $id)
     {
         return $id;
+    }
+
+    public function store (Request $request)
+    {
+        try {
+            $partnerRequestData = $request->all();
+            $this->partnerRequest->create($partnerRequestData);
+
+            return response()->json(['message' => 'Seu pedido para se tornar um parceiro foi enviado com sucesso!'], 201);
+
+        } catch (\Exception $e) {
+            if (config('app.debug')) {
+                return response()->json(ApiError::errorMessage($e->getMessage(), 1010));
+            }
+            return reponse()->json(ApiError::errorMessage('Erro ao atualizar os dados', 1010));
+        }
     }
 }
